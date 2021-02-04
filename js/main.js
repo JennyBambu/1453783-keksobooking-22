@@ -15,7 +15,7 @@ const randomNumber = function (min, max, n){
   }
 
   const rand = startNumber + Math.random() * (endNumber + 1 - startNumber);
-  return rand.toFixed(n);
+  return +rand.toFixed(n);
 }
 
 randomNumber(1,7); //Если нужно целое число - то n равно 0
