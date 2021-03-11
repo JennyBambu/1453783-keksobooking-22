@@ -1,2 +1,3 @@
 import {makeCards}  from './make-cards.js';
-makeCards();
+
+const newCardsData = makeCards(10);
