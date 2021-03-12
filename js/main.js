@@ -1,2 +1,2 @@
-import {makeCards}  from './make-cards.js';
-const newCardsData = makeCards(10);
+import {makeCards, CARDS_COUNT}  from './make-cards.js';
+const newCardsData = makeCards(CARDS_COUNT);

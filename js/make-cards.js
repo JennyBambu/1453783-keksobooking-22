@@ -4,8 +4,7 @@ const TYPES = ['palace', 'flat', 'house', 'bungalow'];
 const CHECKING_OUT = ['12:00', '13:00', '14:00'];
 const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
 const PHOTOS = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg']
-
-
+const CARDS_COUNT = 10;
 /**
  * Функция генерации карточки объявления
  * @return {object} — карточка объявления
@@ -36,7 +35,7 @@ const createCard = () => {
 }
 /**
  * Функция генерации тестовых данных
- * @param {number} count — количество карточек в массиве
+ * @param {number} CARDS_COUNT — количество карточек в массиве
  * @return {array} — тестовый массив карточек объявлений
  */
 const makeCards = (count) => {
@@ -44,4 +43,4 @@ const makeCards = (count) => {
   return cards;
 }
 
-export {makeCards};
+export {makeCards, CARDS_COUNT};
