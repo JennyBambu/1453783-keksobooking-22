@@ -1,3 +1,8 @@
+/**
+* Функция создания DOM-элемента тестовой карточки объявления из объекта
+*@param {object} card — объект тестовой карточки объявления жилья
+*@param {object} lodgingElement— DOM-элемент тестовой карточки объявления жилья
+*/
 const createLodgingСard = (card) => {
   const lodgingСard = document.querySelector('#card').content.querySelector('.popup');
   const lodgingElement = lodgingСard.cloneNode(true);
