@@ -1,6 +1,6 @@
 import {getRandomNumber, getRandomElementFromArray, makeRandomArray} from './util.js';
 
-const TYPES = ['palace', 'flat', 'house', 'bungalow'];
+const TYPES = [{'palace': 'Дворец'}, {'flat': 'Квартира'}, {'house': 'Дом'}, {'bungalow': 'Бунгало'}];
 const CHECKING_OUT = ['12:00', '13:00', '14:00'];
 const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
 const PHOTOS = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg']
