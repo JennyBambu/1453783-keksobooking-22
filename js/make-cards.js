@@ -13,7 +13,7 @@ const createCard = () => {
   let xRandomValue = getRandomNumber(35.65000, 35.70000, 5);
   let yRandomValue = getRandomNumber(139.70000, 139.80000, 5);
   return {
-    avatar: `img/avatars/user0${getRandomNumber(0, 8)}.png`,
+    avatar: `img/avatars/user0${getRandomNumber(1, 8)}.png`,
     offer: {
       title: 'Отличный вариант!',
       address: `${xRandomValue}, ${yRandomValue}`,
