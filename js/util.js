@@ -6,7 +6,7 @@
  * @return {number|null} — случайное число
  */
 
-const randomnumber = (min, max, n) => {
+const getRandomNumber = (min, max, n) => {
   if (min < 0 || max < 0) {
     return null;
   }//неверный диапазон (так как по заданию диапазон может быть только >= 0)
@@ -32,7 +32,7 @@ const randomnumber = (min, max, n) => {
  * @return {string} — случайная строка
  */
 const getRandomElementFromArray = (array) => {
-  return array[randomnumber(0, array.length - 1)];
+  return array[getRandomNumber(0, array.length - 1)];
 }
 
 /**
@@ -43,11 +43,11 @@ const getRandomElementFromArray = (array) => {
  */
 const makeRandomArray = (array) => {
   // генерация случайной длины массива
-  const arrayCount = randomnumber(1, array.length);
+  const arrayCount = getRandomNumber(1, array.length);
 
   // обрезка исходный длины до высчитанной случайной длины
   let randomArray = array.slice(0, arrayCount);
   return randomArray;
 }
 
-export {randomnumber, getRandomElementFromArray, makeRandomArray};
+export {getRandomNumber, getRandomElementFromArray, makeRandomArray};
