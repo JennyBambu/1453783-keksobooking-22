@@ -1,7 +1,6 @@
 import {makeCards, CARDS_COUNT}  from './make-cards.js';
-import {createLodgingСard}  from './popap.js';
+import {generatePins, map } from './map.js';
 
 const newCardsData = makeCards(CARDS_COUNT);
-const map = document.querySelector('#map-canvas');
-const currentCard = createLodgingСard(newCardsData[0]);
-map.appendChild(currentCard);
+
+generatePins(map, newCardsData);
