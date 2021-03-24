@@ -1,16 +1,23 @@
+const LodgingTypes = {
+  PALACE: 'Дворец',
+  FLAT: 'Квартира',
+  HOUSE: 'Дом',
+  BUNGALOW: 'Бунгало',
+}
+
 /**
 * Функция создания DOM-элемента тестовой карточки объявления из объекта
 *@param {object} card — объект тестовой карточки объявления жилья
 *@param {object} lodgingElement— DOM-элемент тестовой карточки объявления жилья
 */
-const createLodgingСard = ({offer, avatar}) => {
+const createLodgingСard = ({offer, avatar, location}) => {
   const lodgingСard = document.querySelector('#card').content.querySelector('.popup');
   const lodgingElement = lodgingСard.cloneNode(true);
 
   lodgingElement.querySelector('.popup__title').textContent = offer.title;
-  lodgingElement.querySelector('.popup__text--address').textContent = offer.address;
+  lodgingElement.querySelector('.popup__text--address').textContent = `Координаты: ${location.lat}, ${location.lng}`;
   lodgingElement.querySelector('.popup__text--price').textContent = `${offer.price} ₽/ночь`;
-  lodgingElement.querySelector('.popup__type').textContent = Object.values(offer.type);
+  lodgingElement.querySelector('.popup__type').textContent = LodgingTypes[offer.type.toUpperCase()];
   lodgingElement.querySelector('.popup__description').textContent = offer.description;
   lodgingElement.querySelector('.popup__avatar').src = avatar;
   lodgingElement.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнаты для ${offer.guests} гостей.`;

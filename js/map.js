@@ -1,10 +1,10 @@
 /* global L:readonly */
-import { createLodgingСard} from './popap.js';
-import {formActive, mapFiltersActive} from './form.js';
+import { createLodgingСard} from './popup.js';
+import {formStatus, form, formInteractivElements, mapFilter, mapFilterInteractiveElements} from './form.js';
 
-const TOKYO_СOORDINATES = {
-  x: 35.6894,
-  y: 139.692,
+const TokyoСoordinate = {
+  X: 35.6894,
+  Y: 139.692,
 };
 
 const MAP_ZOOM = 10;
@@ -27,8 +27,8 @@ const commonPinIcon = L.icon({
 
 const mainPinMarker = L.marker(
   {
-    lat: TOKYO_СOORDINATES.x,
-    lng: TOKYO_СOORDINATES.y,
+    lat: TokyoСoordinate.X,
+    lng: TokyoСoordinate.Y,
   },
   {
     draggable: true,
@@ -38,13 +38,13 @@ const mainPinMarker = L.marker(
 
 const map = L.map('map-canvas')
   .on('load', () => {
-    formActive();
-    mapFiltersActive();
-    inputAddress.value = `${TOKYO_СOORDINATES.x}, ${TOKYO_СOORDINATES.y}`;
+    formStatus(form,'ad-form--disabled', false, formInteractivElements);
+    formStatus(mapFilter,'map__filters--disabled',false, mapFilterInteractiveElements);
+    inputAddress.value = `${TokyoСoordinate.X}, ${TokyoСoordinate.Y}`;
   })
   .setView({
-    lat: TOKYO_СOORDINATES.x,
-    lng: TOKYO_СOORDINATES.y,
+    lat: TokyoСoordinate.X,
+    lng: TokyoСoordinate.Y,
   }, MAP_ZOOM);
 
 L.tileLayer(
@@ -56,25 +56,18 @@ L.tileLayer(
 
 mainPinMarker.addTo(map);
 
-mainPinMarker.on('moveend', (evt) => {
+mainPinMarker.on('move', (evt) => {
   inputAddress.value = `${evt.target.getLatLng().lat.toFixed(ADDRESS_DIGITS_AFTER_DECIMAL)},
   ${evt.target.getLatLng().lng.toFixed(ADDRESS_DIGITS_AFTER_DECIMAL)}`;
 });
 
-const createPopupCard = (object) => {
-  const popupElement = createLodgingСard(object);
-  popupElement.querySelector('.popup__text--address').textContent = `Координаты: ${object.location.x}, ${object.location.y}`;
-
-  return popupElement;
-}
-
-const generatePins =  (map, array) => {
-  array.forEach((element) => {
+const renderPins =  (map, pinsdata) => {
+  pinsdata.forEach((pin) => {
     const icon = commonPinIcon;
 
     const adPin = L.marker({
-      lat: element.location.x,
-      lng: element.location.y,
+      lat: pin.location.lat,
+      lng: pin.location.lng,
     },
     {
       icon,
@@ -82,7 +75,7 @@ const generatePins =  (map, array) => {
     );
     adPin
       .addTo(map)
-      .bindPopup(createPopupCard(element),
+      .bindPopup(createLodgingСard(pin),
         {
           keepInView: true,
         },
@@ -90,4 +83,4 @@ const generatePins =  (map, array) => {
   })
 }
 
-export { map, generatePins };
+export { map, renderPins };
