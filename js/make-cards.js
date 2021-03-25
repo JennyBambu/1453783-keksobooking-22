@@ -35,7 +35,7 @@ const createCard = () => {
 }
 /**
  * Функция генерации тестовых данных
- * @param {number} CARDS_COUNT — количество карточек в массиве
+ * @param {number} count — количество карточек в массиве
  * @return {array} — тестовый массив карточек объявлений
  */
 const makeCards = (count) => {

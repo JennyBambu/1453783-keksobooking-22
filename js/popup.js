@@ -6,22 +6,55 @@ const LodgingTypes = {
 }
 
 /**
-* Функция создания DOM-элемента тестовой карточки объявления из объекта
-*@param {object} card — объект тестовой карточки объявления жилья
-*@param {object} lodgingElement— DOM-элемент тестовой карточки объявления жилья
+* Функция проверки DOM-элемента тестовой карточки объявления из объекта
+*@param {object} element — элемент объекта карточки объявления жилья
+*@return {Boolean} — true, если длина элемента равна нулю или отсутствует атрибут src, false - если это не так
 */
-const createLodgingСard = ({offer, avatar, location}) => {
+const isEmptyElement = (element) => {
+  return element.length === 0 || element.src === null;
+}
+
+/**
+* Функция создания DOM-элемента карточки объявления из объекта
+*@param {object} card — объект карточки объявления жилья
+*@param {object} lodgingElement— DOM-элемент карточки объявления жилья
+*/
+const createLodgingСard = ({offer, author, location}) => {
   const lodgingСard = document.querySelector('#card').content.querySelector('.popup');
   const lodgingElement = lodgingСard.cloneNode(true);
 
-  lodgingElement.querySelector('.popup__title').textContent = offer.title;
   lodgingElement.querySelector('.popup__text--address').textContent = `Координаты: ${location.lat}, ${location.lng}`;
   lodgingElement.querySelector('.popup__text--price').textContent = `${offer.price} ₽/ночь`;
   lodgingElement.querySelector('.popup__type').textContent = LodgingTypes[offer.type.toUpperCase()];
-  lodgingElement.querySelector('.popup__description').textContent = offer.description;
-  lodgingElement.querySelector('.popup__avatar').src = avatar;
   lodgingElement.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнаты для ${offer.guests} гостей.`;
   lodgingElement.querySelector('.popup__text--time').textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}.`;
+
+  const cardAvatar = lodgingElement.querySelector('.popup__avatar');
+
+  if (isEmptyElement(cardAvatar)) {
+    cardAvatar.remove();
+  }
+  else {
+    cardAvatar.src = author.avatar;
+  }
+
+  const cardTitle = lodgingElement.querySelector('.popup__title');
+
+  if (isEmptyElement(cardTitle)) {
+    cardTitle.remove();
+  }
+  else {
+    cardTitle.textContent = offer.title;
+  }
+
+  const cardDescription = lodgingElement.querySelector('.popup__description');
+
+  if (isEmptyElement(cardDescription)) {
+    cardDescription.remove();
+  }
+  else {
+    cardDescription.textContent = offer.description;
+  }
 
   const cardFeatures = lodgingElement.querySelector('.popup__features');
   const cardFeature = lodgingElement.querySelector('.popup__feature');
@@ -34,13 +67,11 @@ const createLodgingСard = ({offer, avatar, location}) => {
     cardFeatures.appendChild(newFeature);
   });
 
-
   const cardPhotos = lodgingElement.querySelector('.popup__photos');
 
   if (offer.photos.length === 0) {
     cardPhotos.remove();
-  }
-  else {
+  } else {
     const cardPhoto = lodgingElement .querySelector('.popup__photo');
     cardPhoto.src = offer.photos[0];
 

@@ -6,6 +6,12 @@
  * @return {number|null} — случайное число
  */
 
+const TokyoСoordinate = {
+  X: 35.6894,
+  Y: 139.692,
+};
+const ALERT_SHOW_TIME = 5000;
+
 const getRandomNumber = (min, max, n) => {
   if (min < 0 || max < 0) {
     return null;
@@ -50,4 +56,33 @@ const makeRandomArray = (array) => {
   return randomArray;
 }
 
-export {getRandomNumber, getRandomElementFromArray, makeRandomArray};
+/**
+ * Функция проверки на нажатие клавиши 'Esc'
+ * @return {Boolean} — true, если была нажата клавиша ESC, false - если не была нажата
+ */
+const isEscEvent = (evt) => {
+  return evt.key === 'Escape' || evt.key === 'Esc';
+}
+/**
+  * Функция создания сообщения об ошибке
+  * @param {string} message — текст сообщения об ошибке
+  */
+const showAlert = (message) => {
+  const adTitle = document.querySelector('.notice__title')
+  const alertContainer = document.createElement('div');
+  alertContainer.style.padding = '30px';
+  alertContainer.style.fontSize = '40px';
+  alertContainer.style.textAlign = 'center';
+  alertContainer.style.backgroundColor = 'red';
+
+  alertContainer.textContent = message;
+
+  adTitle.append(alertContainer);
+
+  setTimeout(() => {
+    alertContainer.remove();
+  }, ALERT_SHOW_TIME);
+}
+
+
+export {getRandomNumber, getRandomElementFromArray, makeRandomArray, isEscEvent, TokyoСoordinate, showAlert };

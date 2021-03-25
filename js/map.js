@@ -1,16 +1,10 @@
 /* global L:readonly */
 import { createLodgingСard} from './popup.js';
-import {formStatus, form, formInteractivElements, mapFilter, mapFilterInteractiveElements} from './form.js';
-
-const TokyoСoordinate = {
-  X: 35.6894,
-  Y: 139.692,
-};
+import { formStatus, form, formInteractivElements, mapFilter, mapFilterInteractiveElements } from './form.js';
+import { TokyoСoordinate } from './util.js';
 
 const MAP_ZOOM = 10;
-
 const ADDRESS_DIGITS_AFTER_DECIMAL = 5;
-
 const inputAddress = document.querySelector('#address');
 
 const mainPinIcon = L.icon({
@@ -61,7 +55,12 @@ mainPinMarker.on('move', (evt) => {
   ${evt.target.getLatLng().lng.toFixed(ADDRESS_DIGITS_AFTER_DECIMAL)}`;
 });
 
-const renderPins =  (map, pinsdata) => {
+/**
+  * Функция создания на карте пинов объявлениЙ, при клике на которые открывается всплывающая карточка отдельного объявления
+  * @param {object} map — объект, содержащий информацию об объявлении
+  * @param {array} pinsdata — массив объектов объявлений для создания пинов на карте
+  */
+const renderPins =  (pinsdata,map) => {
   pinsdata.forEach((pin) => {
     const icon = commonPinIcon;
 
