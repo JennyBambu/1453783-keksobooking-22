@@ -1,6 +1,10 @@
-import {makeCards, CARDS_COUNT}  from './make-cards.js';
-import {generatePins, map } from './map.js';
+import { renderPins, map} from './map.js';
+import { useFormSubmitHandler } from './form-submit.js';
+import { getData } from './data-server.js';
+import { showAlert } from './util.js';
 
-const newCardsData = makeCards(CARDS_COUNT);
-
-generatePins(map, newCardsData);
+getData(
+  (ads) => {
+    renderPins(ads, map);
+  }, showAlert);
+useFormSubmitHandler();
