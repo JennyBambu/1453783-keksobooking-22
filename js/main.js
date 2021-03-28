@@ -8,9 +8,9 @@ import { changeFilter} from './filter.js';
 disableElementsBeforeMapLoad();
 initializeMap();
 getData(
-  (ads) => {
-    renderPins(ads);
-    changeFilter(ads);
+  (advertisements) => {
+    renderPins(advertisements);
+    changeFilter(advertisements);
   }, showAlert);
 formValidation();
 activateFormDataPostOnSubmit();

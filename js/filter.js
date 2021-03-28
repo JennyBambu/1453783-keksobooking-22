@@ -4,10 +4,10 @@ import {renderPins} from './map.js';
 
 const ANY = 'any';
 const PRICE_LOW = 10000;
-const PRICE_HIGHT = 50000;
+const PRICE_HIGH = 50000;
 const PRICE_LOW_VALUE = 'low';
 const PRICE_MIDDLE_VALUE = 'middle';
-const PRICE_HIGHT_VALUE = 'high';
+const PRICE_HIGH_VALUE = 'high';
 const PAUSE_BEFORE_RENDER = 500;
 
 const filter = document.querySelector('.map__filters');
@@ -22,7 +22,7 @@ const houseGuests = filter.querySelector('#housing-guests');
  */
 const advertisementFilter = (advertisements) => {
   const checkedFeatures = filter.querySelectorAll('input[name="features"]:checked');
-  let filterAdvertisements = [];
+  let newFilterAdvertisements = [];
   deleteAdvertisementMarkers();
 
   advertisements.forEach((advertisement) => {
@@ -39,8 +39,8 @@ const advertisementFilter = (advertisements) => {
       let price;
       if (advertisement.offer.price < PRICE_LOW) {
         price = PRICE_LOW_VALUE;
-      } else if (advertisement.offer.price > PRICE_HIGHT) {
-        price = PRICE_HIGHT_VALUE;
+      } else if (advertisement.offer.price > PRICE_HIGH) {
+        price = PRICE_HIGH_VALUE;
       } else {
         price = PRICE_MIDDLE_VALUE;
       }
@@ -61,10 +61,10 @@ const advertisementFilter = (advertisements) => {
       });
     }
     if (isTypeSuit && isRoomsSuit && isGuestsSuit && isPriceSuit && isFeaturesSuit) {
-      filterAdvertisements.push(advertisement);
+      newFilterAdvertisements.push(advertisement);
     }
   });
-  return filterAdvertisements;
+  return newFilterAdvertisements;
 }
 /**
  * Обработчик событий изменения пользователем фильтра
