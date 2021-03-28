@@ -1,12 +1,17 @@
-import { renderPins, map} from './map.js';
-import { useFormSubmitHandler } from './form-submit.js';
+import {initializeMap, renderPins } from './map.js';
+import { activateFormDataPostOnSubmit } from './form-submit.js';
 import { getData } from './data-server.js';
 import { showAlert } from './util.js';
-import { formValidation } from './form.js';
+import { formValidation, disableElementsBeforeMapLoad } from './form.js';
+import { changeFilter} from './filter.js';
 
+disableElementsBeforeMapLoad();
+initializeMap();
 getData(
-  (ads) => {
-    renderPins(ads, map);
+  (advertisements) => {
+    renderPins(advertisements);
+    changeFilter(advertisements);
   }, showAlert);
-useFormSubmitHandler();
 formValidation();
+activateFormDataPostOnSubmit();
+

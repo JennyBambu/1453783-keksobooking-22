@@ -1,6 +1,5 @@
 const GET_URL = 'https://22.javascript.pages.academy/keksobooking/data';
 const POST_URL = 'https://22.javascript.pages.academy/keksobooking';
-
 /**
  * Функция отправки GET-запроса на сервер и обработки полученных данных
  * @param {function} onSuccess — функция обработки успешно полученных данных
@@ -9,12 +8,7 @@ const POST_URL = 'https://22.javascript.pages.academy/keksobooking';
 const getData = (onSuccess, onError) => {
   fetch (GET_URL)
     .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      else {
-        onError('Не удалось загрузить данные. Перезагрузите страницу или зайдите на сайт позже');
-      }
+      return response.json();
     })
     .then(
       onSuccess,
@@ -23,7 +17,6 @@ const getData = (onSuccess, onError) => {
       onError('Не удалось загрузить данные. Перезагрузите страницу или зайдите на сайт позже');
     })
 }
-
 /**
  * Функция отправки POST-запроса на сервер для отправки введенных пользователем данных
  * @param {function} onSuccess — функция обработки успешно отправленных данных
@@ -49,6 +42,6 @@ const sendData = (onSuccess, onError, formData) => {
     .catch(() => {
       onError();
     })
-}
+};
 
 export { getData, sendData }
