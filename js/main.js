@@ -1,5 +1,5 @@
 import {initializeMap, renderPins } from './map.js';
-import { useFormSubmitHandler } from './form-submit.js';
+import { activateFormDataPostOnSubmit } from './form-submit.js';
 import { getData } from './data-server.js';
 import { showAlert } from './util.js';
 import { formValidation, disableElementsBeforeMapLoad } from './form.js';
@@ -13,5 +13,5 @@ getData(
     changeFilter(ads);
   }, showAlert);
 formValidation();
-useFormSubmitHandler();
+activateFormDataPostOnSubmit();
 

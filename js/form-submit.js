@@ -67,7 +67,7 @@ const showSuccessMessageAfterFormSubmit = () => {
 /**
  * Функция отправки на сервер введенных пользователем данных после отправки формы
  */
-const useFormSubmitHandler = () => {
+const activateFormDataPostOnSubmit = () => {
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
@@ -87,5 +87,5 @@ resetButton.addEventListener('click', (evt) => {
   clearFormAfterResetOrSubmit();
 });
 
-export { useFormSubmitHandler };
+export { activateFormDataPostOnSubmit };
 
