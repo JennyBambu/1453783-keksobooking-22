@@ -1,7 +1,7 @@
 /* global L:readonly */
-import { createLodgingСard} from './popup.js';
+import { createLodgingCard} from './popup.js';
 import { formStatus, form, formInteractivElements, mapFilter, mapFilterInteractiveElements } from './form.js';
-import { TokyoСoordinate } from './util.js';
+import { TokyoCoordinate } from './util.js';
 import { advertisementFilter } from './filter.js';
 
 const MAP_ZOOM = 10;
@@ -19,8 +19,8 @@ const mainPinIcon = L.icon({
 
 mainPinMarker = L.marker(
   {
-    lat: TokyoСoordinate.X,
-    lng: TokyoСoordinate.Y,
+    lat: TokyoCoordinate.X,
+    lng: TokyoCoordinate.Y,
   },
   {
     draggable: true,
@@ -33,11 +33,11 @@ const initializeMap = () => {
     .on('load', () => {
       formStatus(form,'ad-form--disabled', false, formInteractivElements);
       formStatus(mapFilter,'map__filters--disabled',false, mapFilterInteractiveElements);
-      inputAddress.value = `${TokyoСoordinate.X}, ${TokyoСoordinate.Y}`;
+      inputAddress.value = `${TokyoCoordinate.X}, ${TokyoCoordinate.Y}`;
     })
     .setView({
-      lat: TokyoСoordinate.X,
-      lng: TokyoСoordinate.Y,
+      lat: TokyoCoordinate.X,
+      lng: TokyoCoordinate.Y,
     }, MAP_ZOOM);
 
   L.tileLayer(
@@ -80,7 +80,7 @@ const renderPins = (advertisements) => {
       adPin._id = 'advertisement';
       adPin
         .addTo(map)
-        .bindPopup(createLodgingСard(ad),
+        .bindPopup(createLodgingCard(ad),
           {
             keepInView: true,
           },
@@ -93,7 +93,7 @@ const renderPins = (advertisements) => {
   * @param {number} x — координата широты
   * @param {number} y — координата долготы
   */
-const resetMap = (x = TokyoСoordinate.X, y = TokyoСoordinate.Y) => {
+const resetMap = (x = TokyoCoordinate.X, y = TokyoCoordinate.Y) => {
   map.setView({
     lat: x,
     lng: y,

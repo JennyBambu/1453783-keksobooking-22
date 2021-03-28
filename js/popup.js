@@ -17,9 +17,9 @@ const isEmptyElement = (element) => {
 *@param {object} card — объект карточки объявления жилья
 *@param {object} lodgingElement— DOM-элемент карточки объявления жилья
 */
-const createLodgingСard = ({offer, author, location}) => {
-  const lodgingСard = document.querySelector('#card').content.querySelector('.popup');
-  const lodgingElement = lodgingСard.cloneNode(true);
+const createLodgingCard = ({offer, author, location}) => {
+  const lodgingCard = document.querySelector('#card').content.querySelector('.popup');
+  const lodgingElement = lodgingCard.cloneNode(true);
 
   lodgingElement.querySelector('.popup__text--address').textContent = `Координаты: ${location.lat}, ${location.lng}`;
   lodgingElement.querySelector('.popup__text--price').textContent = `${offer.price} ₽/ночь`;
@@ -84,4 +84,4 @@ const createLodgingСard = ({offer, author, location}) => {
   return lodgingElement;
 }
 
-export {createLodgingСard};
+export {createLodgingCard};

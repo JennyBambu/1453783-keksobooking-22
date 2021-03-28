@@ -6,7 +6,7 @@
  * @return {number|null} — случайное число
  */
 const ALERT_SHOW_TIME = 5000;
-const TokyoСoordinate = {
+const TokyoCoordinate = {
   X: 35.6894,
   Y: 139.692,
 };
@@ -66,7 +66,7 @@ const showAlert = (message) => {
   alertContainer.style.fontSize = '40px';
   alertContainer.style.textAlign = 'center';
   alertContainer.style.backgroundColor = 'red';
-  alertContainer.style.zIndex = 1000;
+  alertContainer.style.zIndex = '1000';
   alertContainer.textContent = message;
 
   adTitle.append(alertContainer);
@@ -84,11 +84,8 @@ const formStatus = (that, thatclass, active, collection) => {
   }
 
   collection.forEach((element) => {
-    if(active) {
-      element.disabled = true;
-    } else {
-      element.disabled = false;
-    }});
+    element.disabled = !!active;
+  });
 }
 
-export {getRandomNumber, getRandomElementFromArray, makeRandomArray, isEscEvent, TokyoСoordinate, showAlert, formStatus };
+export {getRandomNumber, getRandomElementFromArray, makeRandomArray, isEscEvent, TokyoCoordinate, showAlert, formStatus };
