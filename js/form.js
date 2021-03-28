@@ -124,7 +124,7 @@ const roomAndCapacityValidation = () => {
     const roomNumber = parseInt(roomCount.value, 10);
     const capacityNumber = parseInt(capacityCount.value, 10);
 
-    if (roomNumber == NOT_FOR_GUESTS_ROOM_VALUE && capacityNumber !== NOT_FOR_GUESTS_CAPACITY_VALUE) {
+    if (roomNumber === NOT_FOR_GUESTS_ROOM_VALUE && capacityNumber !== NOT_FOR_GUESTS_CAPACITY_VALUE) {
       capacityCount.setCustomValidity('Для количества "100 комнат" возможен только вариант "не для гостей"');
     } else if (roomNumber !== NOT_FOR_GUESTS_ROOM_VALUE && capacityNumber === NOT_FOR_GUESTS_CAPACITY_VALUE) {
       capacityCount.setCustomValidity('Вариант "не для гостей" возможен только для количества комнат "100 комнат"');

@@ -5,25 +5,22 @@
  * @param {number} n — количество знаков после запятой
  * @return {number|null} — случайное число
  */
-
 const ALERT_SHOW_TIME = 5000;
 const TokyoСoordinate = {
   X: 35.6894,
   Y: 139.692,
 };
 
-
 const getRandomNumber = (min, max, n) => {
   if (min < 0 || max < 0) {
     return null;
-  }//неверный диапазон (так как по заданию диапазон может быть только >= 0)
-  if (min == max) {
+  }
+  if (min === max) {
     return min.toFixed(n);
   }
 
   let startNumber = min;
   let endNumber = max;
-  //Если минимальное значение больше максимального - поменять их местами
   if (startNumber > endNumber) {
     startNumber = max;
     endNumber = min;
@@ -32,7 +29,6 @@ const getRandomNumber = (min, max, n) => {
   const rand = startNumber + Math.random() * (endNumber + 1 - startNumber);
   return +rand.toFixed(n);
 }
-
 /**
  * Функция получения случайного элемента из массива строк
  * @param {array} array — исходный массив строк
@@ -41,7 +37,6 @@ const getRandomNumber = (min, max, n) => {
 const getRandomElementFromArray = (array) => {
   return array[getRandomNumber(0, array.length - 1)];
 }
-
 /**
  * Функция получения массива случайной длины из массива строк
  * @param {array} array — исходный массив строк
@@ -49,14 +44,10 @@ const getRandomElementFromArray = (array) => {
  * @return {array} — полученный массив случайной длины
  */
 const makeRandomArray = (array) => {
-  // генерация случайной длины массива
   const arrayCount = getRandomNumber(1, array.length);
-
-  // обрезка исходный длины до высчитанной случайной длины
   let randomArray = array.slice(0, arrayCount);
   return randomArray;
 }
-
 /**
  * Функция проверки на нажатие клавиши 'Esc'
  * @return {Boolean} — true, если была нажата клавиша ESC, false - если не была нажата
@@ -66,7 +57,7 @@ const isEscEvent = (evt) => {
 }
 /**
   * Функция создания сообщения об ошибке
-  * @param {string} message — текст сообщения об ошибке
+  * @param {string} message
   */
 const showAlert = (message) => {
   const adTitle = document.querySelector('.notice__title')
