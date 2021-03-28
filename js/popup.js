@@ -4,7 +4,6 @@ const LodgingTypes = {
   HOUSE: 'Дом',
   BUNGALOW: 'Бунгало',
 }
-
 /**
 * Функция проверки DOM-элемента тестовой карточки объявления из объекта
 *@param {object} element — элемент объекта карточки объявления жилья
@@ -13,7 +12,6 @@ const LodgingTypes = {
 const isEmptyElement = (element) => {
   return element.length === 0 || element.src === null;
 }
-
 /**
 * Функция создания DOM-элемента карточки объявления из объекта
 *@param {object} card — объект карточки объявления жилья

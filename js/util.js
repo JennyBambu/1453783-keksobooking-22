@@ -6,11 +6,12 @@
  * @return {number|null} — случайное число
  */
 
+const ALERT_SHOW_TIME = 5000;
 const TokyoСoordinate = {
   X: 35.6894,
   Y: 139.692,
 };
-const ALERT_SHOW_TIME = 5000;
+
 
 const getRandomNumber = (min, max, n) => {
   if (min < 0 || max < 0) {

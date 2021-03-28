@@ -103,7 +103,6 @@ const resetMap = (x = TokyoСoordinate.X, y = TokyoСoordinate.Y) => {
 
   inputAddress.value = `${x}, ${y}`;
 }
-
 /**
  * Функция удаления всех маркеров объявлений с карты, кроме главного маркера
  */
