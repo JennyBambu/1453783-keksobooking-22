@@ -49,6 +49,6 @@ const sendData = (onSuccess, onError, formData) => {
     .catch(() => {
       onError();
     })
-}
+};
 
 export { getData, sendData }

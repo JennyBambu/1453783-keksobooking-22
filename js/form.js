@@ -1,3 +1,5 @@
+import {formStatus} from './util.js';
+
 const MIN_TITLE_LENGTH = 30;
 const MAX_TITLE_LENGTH = 100;
 const NOT_FOR_GUESTS_ROOM_VALUE = 100;
@@ -19,20 +21,12 @@ const formInputTitle = form.querySelector('#title');
 const priceInput = form.querySelector('#price');
 const roomCount = form.querySelector('#room_number');
 const capacityCount = form.querySelector('#capacity');
-
-const formStatus = (that, thatclass, active, collection) => {
-  if(active) {
-    that.classList.add(thatclass);
-  } else {
-    that.classList.remove(thatclass);
-  }
-
-  collection.forEach((element) => {
-    if(active) {
-      element.setAttribute('disabled', 'disabled');
-    } else {
-      element.removeAttribute('disabled', 'disabled');
-    }});
+/**
+ *  Функция отключения элементов до инициализации карты
+ */
+const disableElementsBeforeMapLoad = () => {
+  formStatus(form,'ad-form--disabled', false, formInteractivElements);
+  formStatus(mapFilter,'map__filters--disabled',false, mapFilterInteractiveElements);
 }
 
 const selectType = document.querySelector('#type');
@@ -118,7 +112,7 @@ const roomAndCapacityValidation = () => {
     }else if (roomNumber === NOT_FOR_GUESTS_ROOM_VALUE && capacityNumber !== NOT_FOR_GUESTS_CAPACITY_VALUE) {
       roomCount.setCustomValidity('Тип "100 комнат" возможен только для варианта "Не для гостей"');
     }else if (roomNumber < capacityNumber) {
-      roomCount.setCustomValidity(`Количество комнат должно быть не меньше ${roomCount.value}`);
+      roomCount.setCustomValidity(`Количество комнат должно быть не меньше ${capacityCount.value}`);
     } else {
       roomCount.setCustomValidity('');
     }
@@ -153,4 +147,4 @@ const formValidation = () => {
   roomAndCapacityValidation();
 }
 
-export {formStatus, form, formInteractivElements, mapFilter, mapFilterInteractiveElements, formValidation };
+export {formStatus, form, formInteractivElements, mapFilter, mapFilterInteractiveElements, formValidation, disableElementsBeforeMapLoad };
