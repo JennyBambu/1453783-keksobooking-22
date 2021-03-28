@@ -8,12 +8,7 @@ const POST_URL = 'https://22.javascript.pages.academy/keksobooking';
 const getData = (onSuccess, onError) => {
   fetch (GET_URL)
     .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      else {
-        onError('Не удалось загрузить данные. Перезагрузите страницу или зайдите на сайт позже');
-      }
+      return response.json();
     })
     .then(
       onSuccess,

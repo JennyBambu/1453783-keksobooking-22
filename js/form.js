@@ -36,7 +36,7 @@ const inputPrice = document.querySelector('#price');
  */
 selectType.addEventListener('change', (evt) => {
   inputPrice.placeholder = PriceMinOnNight[evt.target.value.toUpperCase()];
-  inputPrice.setAttribute('min', PriceMinOnNight[evt.target.value.toUpperCase()]);
+  inputPrice.min = ('min', PriceMinOnNight[evt.target.value.toUpperCase()]);
 })
 /**
  *  Синхронизация времени заезда и выезда
