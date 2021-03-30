@@ -4,6 +4,7 @@ import { getData } from './data-server.js';
 import { showAlert } from './util.js';
 import { formValidation, disableElementsBeforeMapLoad } from './form.js';
 import { changeFilter} from './filter.js';
+import { pickAvatar, pickImage } from './image-preview.js';
 
 disableElementsBeforeMapLoad();
 initializeMap();
@@ -12,6 +13,9 @@ getData(
     renderPins(advertisements);
     changeFilter(advertisements);
   }, showAlert);
+pickAvatar();
+pickImage();
 formValidation();
 activateFormDataPostOnSubmit();
+
 

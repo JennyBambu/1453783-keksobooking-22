@@ -5,6 +5,25 @@ import { resetMap, deleteAdvertisementMarkers, renderPins} from './map.js';
 const MESSAGE_POSITION_Z_INDEX = 1000;
 const form = document.querySelector('.ad-form');
 const resetButton = form.querySelector('.ad-form__reset');
+const avatarPreview = document.querySelector('.ad-form-header__preview img');
+const photoOfLodgingPreviewBlock = document.querySelector('.ad-form__photo');
+const BasicAvatarParameter = {
+  WIDTH: 40,
+  HEIGHT: 44,
+};
+/**
+ * Функция очистки выбранных пользователем аватара и/или фотографий жилья
+ */
+const clearPhotoAndAvatar = () => {
+  avatarPreview.src = 'img/muffin-grey.svg';
+  avatarPreview.width = BasicAvatarParameter.WIDTH;
+  avatarPreview.height = BasicAvatarParameter.HEIGHT;
+  const photosForClearing = Array.from(photoOfLodgingPreviewBlock.children);
+  photosForClearing.forEach((photo) => {
+    photo.remove();
+  });
+}
+
 /**
  * Функция показа сообщения об ошибке отправки формы
  */
@@ -18,12 +37,13 @@ const showErrorMessageAfterFormSubmit = () => {
   closeMessage(errorMessage);
 }
 /**
- * Функция очистки полей ввода, сброса фильтров (после успешной отправки формы или нажатия на кнопку "Очистить форму")
+ * Функция очистки полей ввода, сброса фильтров, сброса пользовательских аватарки и изображений квартир (после успешной отправки формы или нажатия на кнопку "Очистить форму")
  */
 const clearFormAfterResetOrSubmit = () => {
   form.reset();
   resetMap();
   deleteAdvertisementMarkers();
+  clearPhotoAndAvatar();
   document.querySelector('.map__filters').reset();
   getData(
     (ads) => {
