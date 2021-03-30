@@ -9,7 +9,7 @@ const imagesBlock = document.querySelector('.ad-form__photo');
  */
 const pickAvatar = () => {
   avatarPick .addEventListener('change', () => {
-    const file = avatarPick .files[0];
+    const file = avatarPick.files[0];
     const fileName = file.name.toLowerCase();
     const matches = FILE_TYPES.some((it) => {
       return fileName.endsWith(it);
